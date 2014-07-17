@@ -1,0 +1,231 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>瀑布流</title>
+    <link href="../../css/base.css" rel="stylesheet" type="text/css" />
+    <link href="../../css/common.css" rel="stylesheet" type="text/css" />
+    <link href="../../js/shBrush/styles/shCore.css" rel="stylesheet" type="text/css" />
+    <link href="../../js/shBrush/styles/shThemeFadeToGrey.css" rel="stylesheet" type="text/css" />
+    <script src="../../js/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="../../js/shBrush/src/shCore.js" type="text/javascript"></script>
+    <script src="../../js/shBrush/scripts/shBrushJScript.js" type="text/javascript"></script>
+    <style type="text/css">
+        .waterfall{
+            position:relative;
+            padding:2px;
+            margin-left:15px;
+            }
+        .feed{
+            padding:5px;
+            border:1px solid #ccc;
+            border-radius:2px;
+            width:300px;
+            margin-bottom:10px;
+            }
+        .feed img{
+            width:300px;
+            border:none;
+            }
+        .list{
+            position:absolute;
+            top:0;
+            left:0;
+            }
+        .code_a{ padding:0 0 0 10px;}
+    </style>
+	<script type="text/javascript">
+	    SyntaxHighlighter.config.clipboardSwf = '../../js/shBrush/scripts/clipboard.swf';
+	    SyntaxHighlighter.all();
+	</script>
+</head>
+<body>
+    <header>
+        <a href="../../index.html"><img class="m_logo" src="../../img/logo/mylogo.png" alt="LOGO图片" /></a>
+        <nav>
+            <a href="../../index.html">Home</a>
+            <a href="#">Work</a>
+            <a href="#">Profile</a>
+        </nav>
+    </header>
+    <section id="main">
+        <h1 class="m_tit">瀑布流(练习)</h1>
+        <section>
+            <div id="container">
+                <div class="waterfall">
+                    <div class="feed">
+                        <img alt="" src="../../upload/waterfall/20140207145922924.jpg" />
+                        <p>图片1</p>
+                    </div>
+                    <div class="feed">
+                        <img alt="" src="../../upload/waterfall/20140207145923091.jpg" />
+                        <p>图片2</p>
+                    </div>
+                    <div class="feed">
+                        <img alt="" src="../../upload/waterfall/20140207145923183.jpg" />
+                        <p>图片3</p>
+                    </div>
+                    <div class="feed">
+                        <img alt="" src="../../upload/waterfall/20140207145923293.jpg" />
+                        <p>图片4</p>
+                    </div>
+                    <div class="feed">
+                        <img alt="" src="../../upload/waterfall/20140207145923705.jpg" />
+                        <p>图片5</p>
+                    </div>
+                    <div class="feed">
+                        <img alt="" src="../../upload/waterfall/20140207145923831.jpg" />
+                        <p>图片6</p>
+                    </div>
+                    <div class="feed">
+                        <img alt="" src="../../upload/waterfall/20140207145924084.jpg" />
+                        <p>图片7</p>
+                    </div>
+                    <div class="feed">
+                        <img alt="" src="../../upload/waterfall/20140207145924202.jpg" />
+                        <p>图片8</p>
+                    </div>
+                    <div class="feed">
+                        <img alt="" src="../../upload/waterfall/20140207150848350.jpg" />
+                        <p>图片9</p>
+                    </div>
+                    <div class="feed">
+                        <img alt="" src="../../upload/waterfall/20140207150848419.jpg" />
+                        <p>图片10</p>
+                    </div>
+                    <div class="feed">
+                        <img alt="" src="../../upload/waterfall/20140207150848554.jpg" />
+                        <p>图片11</p>
+                    </div>
+                    <div class="feed">
+                        <img alt="" src="../../upload/waterfall/20140207150848706.jpg" />
+                        <p>图片12</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="code_a">
+            <pre class="brush:javascript">
+                $(function () {
+                    function fnInit() {
+                        var jqFeed = $(".feed");
+                        var aFeedList = new Array();
+                        var aList = new Array();
+                        var i = 0;
+                        //先添加三列作为之后插入内容的容器
+                        for (; i < nListNum; i++) {
+                            jqConter.append("&lt;div class='list'&gt;&lt;/div&gt;");
+                        }
+                        //将三列容器的数据插入一个数组，之后会通过数组来调用
+                        jqConter.find(".list").each(function () {
+                            aList.push({ "obj": $(this), "height": 0 });
+                        })
+                        //同上，把每一条内容都插入数组，之后通过数组来操作
+                        jqFeed.each(function () {
+                            var nId = $(this).index();
+                            aFeedList.push({ "obj": $(this), "height": $(this).outerHeight() + 10 });
+                            $(".list:eq(" + nId + ")").css({ "left": $(this).outerWidth() * nId + 15 * nId + "px", "width": $(this).outerWidth() + "px" });
+                        })
+                        //将数组进行从小到大的排序
+                        aFeedList = aFeedList.bubble();
+                        //调用函数
+                        fnInsert(aFeedList, aList);
+                    }
+                    //进行运算插入内容
+                    function fnInsert(aryChild, aryParent) {
+                        var n = 0;
+                        var nLength = 0;
+                        while (aryChild.length > 0) {
+                            nLength = aryChild.length;
+                            aryParent[0]["obj"].append(aryChild[nLength - 1]["obj"]);
+                            aryParent[0]["height"] += aryChild[nLength - 1]["height"];
+                            aryParent[0]["obj"].height(aryParent[0]["height"]);
+                            aryChild.splice(nLength - 1, 1);
+                            aryParent = aryParent.bubble();
+                            jqConter.height(aryParent[nListNum - 1]["height"]);
+                        }
+                    }
+                    //临时给数组添加一个排序的方法，从小到大的排序。
+                    Array.prototype.bubble = function () {
+                        var ary = this;
+                        var i = 0;
+                        for (; i < ary.length; i++) {
+                            for (var j = i; j < ary.length; j++) {
+                                if (ary[i]["height"] > ary[j]["height"]) {
+                                    var temp = ary[i];
+                                    ary[i] = ary[j];
+                                    ary[j] = temp;
+                                }
+                            }
+                        }
+                        return ary;
+                    }
+                    //声明一些全局变量
+                    var jqConter = $(".waterfall");
+                    var nListNum = 3;
+                    var nMinListNum = 1;
+                    //在页面加载完成后调用函数
+                    $(window).load(fnInit);
+                })
+            </pre>
+        </section>
+    </section>
+    <script type="text/javascript">
+        $(function () {
+            function fnInit() {
+                var aFeedList = new Array();
+                var aList = new Array();
+                var jqFeed = $(".feed");
+                var i = 0;
+                for (; i < nListNum; i++) {
+                    jqConter.append("<div class='list'></div>");
+                }
+                jqConter.find(".list").each(function () {
+                    aList.push({ "obj": $(this), "height": 0 });
+                })
+                jqFeed.each(function () {
+                    var nId = $(this).index();
+                    aFeedList.push({ "obj": $(this), "height": $(this).outerHeight() + 10 });
+                    $(".list:eq(" + nId + ")").css({ "left": $(this).outerWidth() * nId + 15 * nId + "px", "width": $(this).outerWidth() + "px" });
+                })
+                aFeedList = aFeedList.bubble();
+                fnInsert(aFeedList, aList);
+            }
+
+            function fnInsert(aryChild, aryParent) {
+                var n = 0;
+                var nLength = 0;
+                while (aryChild.length > 0) {
+                    nLength = aryChild.length;
+                    aryParent[0]["obj"].append(aryChild[nLength - 1]["obj"]);
+                    aryParent[0]["height"] += aryChild[nLength - 1]["height"];
+                    aryParent[0]["obj"].height(aryParent[0]["height"]);
+                    aryChild.splice(nLength - 1, 1);
+                    aryParent = aryParent.bubble();
+                    jqConter.height(aryParent[nListNum - 1]["height"]);
+                }
+            }
+
+            Array.prototype.bubble = function () {
+                var ary = this;
+                var i = 0;
+                for (; i < ary.length; i++) {
+                    for (var j = i; j < ary.length; j++) {
+                        if (ary[i]["height"] > ary[j]["height"]) {
+                            var temp = ary[i];
+                            ary[i] = ary[j];
+                            ary[j] = temp;
+                        }
+                    }
+                }
+                return ary;
+            }
+
+            var jqConter = $(".waterfall");
+            var nListNum = 3;
+            var nMinListNum = 1;
+            $(window).load(fnInit);
+        })
+    </script>
+</body>
+</html>

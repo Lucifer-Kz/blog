@@ -1,0 +1,22 @@
+<%- include header %>
+	<div class="post clearFix">
+		<form method="post">
+			<input class="p_tit" placeholder="请在这里输入标题" type="text" name="title" />
+			<span class="p_type">
+				文章类型：
+				<select name="type">
+					<option>Other</option>
+					<option>Html5</option>
+					<option>Css3</option>
+					<option>Javascript</option>
+					<option>Jquery</option>
+				</select>
+			</span>
+			<textarea class="p_desc" placeholder="请在这里输出文章描述" name="desc" rows="" cols=""></textarea>
+			<textarea class="p_cont" placeholder="请在这里输入内容" name="post" rows="" cols=""></textarea>
+			<div class="p_addition">
+				<input class="p_submit com_btn_01" type="submit" value="发表" />
+			</div>
+		</form>
+	</div>
+<%- include footer %>

@@ -1,0 +1,21 @@
+<%- include header %>
+	<div class="m_post_list">
+		<ul>
+			<% posts.forEach(function(post,index){ %>
+			<li>
+				<h2><a class="m_title" href="/u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>"><%= post.title %></a></h2>
+				<%- post.description %>
+				<p class="info">
+					作者：<a class="m_author" href="/u/<%= post.name %>"><%= post.name %></a> | 
+					日期：<span class="m_date"><%= post.time.minute %></span>
+					<% if (user && (user.name == post.name)) { %>
+					<a class="edit" href="/edit/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">修改</a>
+					<a class="edit" href="/remove/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">删除</a>
+					<% } %>
+				</p>
+				
+			</li>
+			<% }) %>
+		</ul>
+	</div>
+<%- include footer %>

@@ -1,0 +1,91 @@
+<%- include header %>
+<div class="m_top">
+            <div class="m_banner">
+                <div class="m_pic">
+                    <ul>
+                        <li><img alt="" src="img/banner/banner1.jpg" />
+                            <p>Banner1</p></li>
+                        <li><img alt="" src="img/banner/banner2.jpg" />
+                            <p>Banner2</p></li>
+                        <li><img alt="" src="img/banner/banner3.jpg" />
+                            <p>Banner3</p></li>
+                        <li><img alt="" src="img/banner/banner4.jpg" />
+                            <p>Banner4</p></li>
+                        <li><img alt="" src="img/banner/banner5.jpg" />
+                            <p>Banner5</p></li>
+                    </ul>
+					<script type="text/javascript">
+						$(function(){
+							var leng = $(".m_pic li").length - 1;
+							var t;
+
+							function fnSlide(n){
+								clearTimeout(t);
+								$(".act").removeClass("act");
+								$(".m_nav a:eq("+ n +")").addClass("act");
+								$(".m_pic ul").stop().animate({ "left" : - n * 640 });
+								n = n == leng ? 0 : n + 1;
+								t = setTimeout(function(){ fnSlide(n); } , 3000);
+							}
+
+							$(".m_nav a").each(function(){
+								$(this).mouseover(function(){
+									var nId = $(this).index();
+									fnSlide(nId)
+								})
+							});
+
+							t = setTimeout(function(){ fnSlide(1); } , 3000);
+
+						})
+					</script>
+                </div>
+                <div class="m_nav">
+                    <a class="act">1</a>
+                    <a>2</a>
+                    <a>3</a>
+                    <a>4</a>
+                    <a>5</a>
+                </div>
+            </div>
+            <div class="m_info">
+                <h2>最新更新</h2>
+                <ul>
+					<% posts.forEach(function (post, index) { if(index<10){ %>
+						<li><a class="m_info_tit" href="/u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>"><%= post.title %></a>
+							<span class="m_date"><%- post.time.day %></span>
+							<a class="m_author" href="/u/<%= post.name %>"><%= post.name %></a>
+						</li>
+					<% }}) %>
+                </ul>
+            </div>
+        </div>
+        <ul class="m_list">
+            <li>
+                <h3>H t m l 5</h3>
+				<% posts.forEach(function (post, index) {  if(post.type == "Html5"){ %>
+					<p><a href="/u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>"><%= post.title %></a></p>
+				<% }}) %>
+
+            </li>
+            <li>
+                <h3>C s s 3</h3>
+                <!--<p><a href="htm/css3/css3-nav-01.html">纯Css3导航栏</a></p>-->
+				<% posts.forEach(function (post, index) {  if(post.type == "Css3"){ %>
+					<p><a href="/u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>"><%= post.title %></a></p>
+				<% }}) %>
+                </li>
+            <li>
+                <h3>Javascript</h3></li>
+				<% posts.forEach(function (post, index) {  if(post.type == "Javascript"){ %>
+					<p><a href="/u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>"><%= post.title %></a></p>
+				<% }}) %>
+            <li>
+                <h3>Jquery</h3>
+                <!--<p><a href="htm/jq/jq-scroll.html">Jq滚动条</a></p>
+                <p><a href="htm/jq/jq-waterfall.html">瀑布流</a></p></li>-->
+				<% posts.forEach(function (post, index) {  if(post.type == "Jquery"){ %>
+					<p><a href="/u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>"><%= post.title %></a></p>
+				<% }}) %>
+        </ul>
+<%- include footer %>

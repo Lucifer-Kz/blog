@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>瀑布流</title>
+    <link href="../../css/base.css" rel="stylesheet" type="text/css" />
+    <link href="../../css/common.css" rel="stylesheet" type="text/css" />
+    <link href="../../js/shBrush/styles/shCore.css" rel="stylesheet" type="text/css" />
+    <link href="../../js/shBrush/styles/shThemeFadeToGrey.css" rel="stylesheet" type="text/css" />
+    <script src="../../js/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="../../js/shBrush/src/shCore.js" type="text/javascript"></script>
+    <script src="../../js/shBrush/scripts/shBrushJScript.js" type="text/javascript"></script>
+    <style type="text/css">
+        .waterfall{
+            position:relative;
+            padding:2px;
+            margin-left:15px;
+            }
+        .feed{
+            padding:5px;
+            border:1px solid #ccc;
+            border-radius:2px;
+            width:300px;
+            margin-bottom:10px;
+            }
+        .feed img{
+            width:300px;
+            border:none;
+            }
+        .code_a{ padding:0 0 0 10px;}
+    </style>
+	<script type="text/javascript">
+	    SyntaxHighlighter.config.clipboardSwf = '../../js/shBrush/scripts/clipboard.swf';
+	    SyntaxHighlighter.all();
+	</script>
+</head>
+<body>
+    <header>
+        <a href="../../index.html"><img class="m_logo" src="../../img/logo/mylogo.png" alt="LOGO图片" /></a>
+        <nav>
+            <a href="../../index.html">Home</a>
+            <a href="#">Work</a>
+            <a href="#">Profile</a>
+        </nav>
+    </header>
+    <section id="main">
+        <h1 class="m_tit">瀑布流</h1>
+        <section>
+            <div id="container">
+                <div class="waterfall">
+                    <div class="feed">
+                        <img alt="" src="../../upload/waterfall/20140207145922924.jpg" />
+                        <p>图片1</p>
+                    </div>
+                    <div class="feed">
+                        <img alt="" src="../../upload/waterfall/20140207145923091.jpg" />
+                        <p>图片2</p>
+                    </div>
+                    <div class="feed">
+                        <img alt="" src="../../upload/waterfall/20140207145923183.jpg" />
+                        <p>图片3</p>
+                    </div>
+                    <div class="feed">
+                        <img alt="" src="../../upload/waterfall/20140207145923293.jpg" />
+                        <p>图片4</p>
+                    </div>
+                    <div class="feed">
+                        <img alt="" src="../../upload/waterfall/20140207145923705.jpg" />
+                        <p>图片5</p>
+                    </div>
+                    <div class="feed">
+                        <img alt="" src="../../upload/waterfall/20140207145923831.jpg" />
+                        <p>图片6</p>
+                    </div>
+                    <div class="feed">
+                        <img alt="" src="../../upload/waterfall/20140207145924084.jpg" />
+                        <p>图片7</p>
+                    </div>
+                    <div class="feed">
+                        <img alt="" src="../../upload/waterfall/20140207145924202.jpg" />
+                        <p>图片8</p>
+                    </div>
+                    <div class="feed">
+                        <img alt="" src="../../upload/waterfall/20140207150848350.jpg" />
+                        <p>图片9</p>
+                    </div>
+                    <div class="feed">
+                        <img alt="" src="../../upload/waterfall/20140207150848419.jpg" />
+                        <p>图片10</p>
+                    </div>
+                    <div class="feed">
+                        <img alt="" src="../../upload/waterfall/20140207150848554.jpg" />
+                        <p>图片11</p>
+                    </div>
+                    <div class="feed">
+                        <img alt="" src="../../upload/waterfall/20140207150848706.jpg" />
+                        <p>图片12</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="code_a">
+            <pre class="brush:javascript">
+            </pre>
+        </section>
+    </section>
+    <script type="text/javascript">
+        $(function () {
+            (function ($) {
+                $.fn.kzWaterFall = function (options) {
+                    var opts = $.extend({}, $.fn.kzWaterFall.settings, options);
+
+                    $(this).kzWaterFall.API(opts);
+                }
+                $.fn.kzWaterFall.API = {
+                    init: function () {
+                        var parent = $(this);
+                        var child = parent.find(opt.oChild);
+                        alert(parent.html());
+                    }
+                }
+                $.fn.kzWaterFall.settings = {
+                    resizable:true,
+                    oItem: "div",
+                    nList: 3,
+                    nMinList: 1
+                }
+            })(jQuery)
+            $(".waterfall").kzWaterFall();
+        })
+    </script>
+</body>
+</html>

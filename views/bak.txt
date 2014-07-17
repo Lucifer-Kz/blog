@@ -1,0 +1,19 @@
+<% if (success) { %>
+<div>
+<%= success %>
+</div>
+<% } %>
+<% if (error) { %>
+<div>
+<%= error %>
+</div>
+<% } %>
+
+
+<% if(user) { %>
+    <a title="·¢±í" href="/post">Post</a>
+	<a title="µÇ³ö" href="/logout">Logout</a>
+<% } else { %>
+    <a title="µÇÂ¼" href="/login">Login</a>
+    <a title="×¢²á" href="/reg">Register</a>
+<% } %>

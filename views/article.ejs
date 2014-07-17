@@ -1,0 +1,11 @@
+<%- include header %>
+<div class="article">
+	<h1 class="m_tit"><%= post.title %></h1>
+	<p class="info">
+		作者：<a href="/u/<%= post.name %>"><%= post.name %></a> | 
+		日期：<span class="m_date"><%= post.time.minute %></span>
+	</p>
+	<%- post.post %>
+</div>
+<%- include comment %>
+<%- include footer %>

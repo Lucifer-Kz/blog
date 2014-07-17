@@ -1,0 +1,32 @@
+﻿.login, .reg { position:absolute; width: 400px; top:250px; left:50%; margin-left:-200px; color: #777; font-size: 15px; }
+.login form, .reg form { background-color: #fff; border: 1px solid #eee; width: 300px; padding: 50px; }
+.login input[type="text"], .login input[type="password"], .reg input[type="text"], .reg input[type="password"] { width: 295px; height: 32px; border: 1px solid #CCC; background-color: #FBFBFB; margin: 10px 0 0; padding-left: 5px; font: 14px/32px "微软雅黑"; }
+.login input[type="password"], .reg input[type="password"] { margin-bottom: 10px; }
+.login input[type="submit"], .reg input[type="submit"] { float: right; width: 80px; height: 28px; background: #2EA2CC; border: 1px solid #0074A2; border-radius: 3px; color: #FFF; font: 14px/28px "微软雅黑"; }
+.login input[type="submit"]:hover, .reg input[type="submit"]:hover { background: #1E8CBE; }
+.login p.f_err, .reg p.f_err { height: 20px; margin: 3px 0; font-size: 12px; color: Red; }
+.login label input, .reg label input { margin-right: 10px; }
+.login .sub_nav, .reg .sub_nav { padding-left: 50px; font-size: 12px; color: #000; }
+.login .sub_nav a, .reg .sub_nav a { color: #EEE; margin: 0 5px; }
+
+.post { width: 850px; text-align: center; margin: 0 auto; }
+.post .p_tit { display:block; width: 500px; height: 64px; line-height: 64px; border: 1px solid #CCC; font-size: 24px; text-align: center; }
+.post .p_cont, .post .p_desc { width: 98%; height: 600px; border: 1px solid #CCC; margin-top: 20px; padding: 5px; }
+.post .p_desc { height: 60px; }
+.post .p_submit { float: right; }
+.post .p_type{ float:left; line-height:48px;}
+.post .p_type select{ width:100px; line-height:42px; font-size:12px;}
+
+.edit{margin:3px;padding:2px 5px;border-radius:3px;background-color:#f3f3f3;color:#333;font-size:13px;}
+.edit:hover{text-decoration:none;background-color:#f00;color:#fff;-webkit-transition:color .2s linear;}
+
+.article .info { padding-left:20px;}
+
+.comments { line-height:32px; padding:0 20px;}
+.comments .c_list li { border-bottom:1px dashed #66CCFF;}
+.comments .c_list li:last-child { border-bottom:none;}
+.comments .c_list .name{ color:#328BD2;}
+.comments .c_form th{ width:100px; font-size:18px;}
+.comments .c_form input[type="text"] { width:395px; height:24px; border:1px solid #0074A2; padding-left:5px;}
+.comments .c_form textarea { width:500px; border:1px solid #0074A2;}
+.comments .c_form input[type="submit"] { float:right;}

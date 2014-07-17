@@ -1,0 +1,16 @@
+<%- include header %>
+	<div class="reg">
+		<form method="post">
+				<h4>Username：  </h4>
+				<input type="text" title="用户名" name="name"/><br />
+				<h4>Email Address：    </h4>
+				<input type="text" title="邮箱" name="email"/><br />
+				<h4>Password：    </h4>
+				<input type="password" title="密码" name="password"/><br />
+				<h4>Comfirm your password：</h4>
+				<input type="password" title="重复密码" name="password-repeat"/><br />
+				<input type="submit" title="注册" value="Register"/>
+		</form>
+		<p class="sub_nav"><a title="登录" href="/manage">Login</a>|<a title="忘记密码" href="/forgot">Forgot Password</a></p>
+	</div>
+<%- include footer %>

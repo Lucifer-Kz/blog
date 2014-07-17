@@ -1,0 +1,40 @@
+<% %>
+<div class="comments">
+    <h1 class="com_sub_tit">意见评论</h1>
+    <ul class="c_list">
+      <% post.comments.forEach(function (comment, index) { %>
+      <li>
+        <a class="name" href="<%= comment.website %>"><%= comment.name %></a>
+        <span class="info">
+          回复于 <%= comment.time %>
+        </span>
+        <%- comment.content %>
+    </li>
+      <% }) %>
+    </ul>
+
+    <form method="post">
+        <table class="c_form">
+            <% if (user) { %>
+                <tr><th>姓名：</th><td><input type="text" name="name" value="<%= user.name %>" /></td></tr>
+                <tr>
+                  <th>邮箱：</th><td><input type="text" name="email" value="<%= user.email %>" /></td></tr>
+                <tr>
+                  <th>网址：</th><td><input type="text" name="website" value="/u/<%= user.name %>" /></td></tr>
+            <% } else { %>
+                <tr><th>姓名：</th><td><input type="text" name="name" /></td></tr>
+                <tr>
+                  <th>邮箱：</th>
+                  <td>
+                    <input type="text" name="email" />
+                  </td>
+                </tr>
+                <tr>
+                  <th>网址：</th><td><input type="text" name="website" value="http://" /></td>
+            </tr>
+            <% } %>
+            <tr><td colspan="2"><textarea name="content" rows="5" cols="80"></textarea></td></tr>
+            <tr><td colspan="2"><input class="com_btn_01" type="submit" value="留言" /></td></tr>
+        </table>
+    </form>
+</div>

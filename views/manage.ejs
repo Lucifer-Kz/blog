@@ -1,0 +1,14 @@
+<%- include header %>
+		<div class="login">
+			<form method="post">
+					<h4>Username：</h4>
+					<input type="text" name="name"/>
+					<p class="f_err"><%= errorAccount %></p>
+					<h4>Password：</h4>
+					<input type="password" name="password"/>
+					<p class="f_err"><%= errorPassword %></p>
+					<label><input type="checkbox" />Remember</label><input type="submit" value="Login"/>
+			</form>
+			<p class="sub_nav"><a title="注册" href="/reg">Register</a>|<a title="忘记密码" href="/forgot">Forgot Password</a></p>
+		</div>
+<%- include footer %>
